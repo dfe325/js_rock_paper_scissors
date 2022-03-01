@@ -7,13 +7,9 @@ function playRound(playerSelection, computerSelection) {
   }
 
   if (playerSelection === "rock" && computerSelection != "paper" || playerSelection === "paper" && computerSelection != "scissors" || playerSelection === "scissors" && computerSelection != "rock") {
-
     return `You win! ${playerSelection} beats ${computerSelection}`
-
   } else {
-
     return `You lose! ${computerSelection} beats ${playerSelection}`
-
   }
 }
 
@@ -23,12 +19,12 @@ function game () {
   let tie = 0;
   const outcome_list = ['Player', 'Computer', 'Tie'];
 
-
   for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
     let computerPlay = ['scissors', 'paper', 'rock'];
     let computerSelection = computerPlay[Math.floor(Math.random() * computerPlay.length)]
     const playerSelection = window.prompt("Rock, paper, or scissors?");
     let outcome = playRound(playerSelection, computerSelection);
+    
     if (outcome.includes("You win!")) {
       player += 1;
     } else if (outcome.includes("You lose!")) {

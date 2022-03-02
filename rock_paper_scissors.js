@@ -4,7 +4,7 @@
 // then randomly selects r, p, or s for the computer
 // then tabulates whether this was a win, lose, or draw for the player
 // at the end of 5 rounds, it reports whether the winner = player, CPU, or tie
-
+// *text commit
 
 
 function playRound(playerSelection, computerSelection) {

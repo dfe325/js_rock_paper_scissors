@@ -6,56 +6,101 @@
 // at the end of 5 rounds, it reports whether the winner = player, CPU, or tie
 // *text commit
 
+//function computerSelect(computerOptions) {
+//  computerSelect = computerOptions[Math.floor(Math.random() *
+//      computerOptions.length)];
+//  return computerSelect;
+//}
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
 
-  if (playerSelection == computerSelection) {
-    return "Tie! Try again!";
-  }
+//need to addEventListener for all buttons
 
-  if (playerSelection === "rock" && computerSelection != "paper" ||
-      playerSelection === "paper" && computerSelection != "scissors" ||
-          playerSelection === "scissors" && computerSelection != "rock") {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
-  } else {
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
-  }
+console.dir(document);
+
+// we use the .forEach method to iterate through each button
+document.getElementById("btn").addEventListener("click", userChooses);
+//console.log(x);
+
+function userChooses () {
+  console.log(document.getElementById("btn").innerHTML);
 }
 
-function playGame () {
-  let player = 0;
-  let computer = 0;
-  let tie = 0;
-  const outcomeList = ['Player', 'Computer', 'Tie'];
+//console.log(x);
 
-  for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
-    let computerOptions = ['scissors', 'paper', 'rock'];
-    let computerSelection = computerOptions[Math.floor(Math.random() *
-        computerOptions.length)]
-    const playerSelection = window.prompt("Rock, paper, or scissors?");
-    let outcome = playRound(playerSelection, computerSelection);
+function choice () {
+  const options = ['scissors', 'paper', 'rock'];
 
-    if (outcome.includes("You win!")) {
-      player += 1;
-    } else if (outcome.includes("You lose!")) {
-      computer += 1;
-    } else if (outcome.includes("Tie!")) {
-      tie += 1;
+  return options[Math.floor(Math.random() *
+      options.length)];
+}
+
+function alertFunction() {
+  alert(`You chose!`);
+}
+
+ function playRound() {
+    //let playerSelection = window.prompt("Rock, paper, or scissors?");
+    let playerSelection = 0;
+    //console.log(document.querySelectorAll('#btn')[1].innerHTML);
+    let computerSelection = choice();
+
+    return console.log(determineWinner(playerSelection, computerSelection))
+  }
+
+
+function determineWinner(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+      return "Tie! Try again!";
     }
 
-    console.log([`player=${player}`, `computer=${computer}`, `tie=${tie}`]);
-    outcome = playRound(playerSelection, computerSelection);
-
-    }
-    let finalTally = [player, computer, tie];
-    let winner = Math.max.apply(Math, finalTally);
-
-    if (finalTally[0] == finalTally[1]) {
-      return "Tie.";
+    if (playerSelection === "rock" && computerSelection != "paper" ||
+        playerSelection === "paper" && computerSelection != "scissors" ||
+            playerSelection === "scissors" && computerSelection != "rock") {
+      return `You win: ${playerSelection[1]} beats ${computerSelection}!`;
     } else {
-    return `${outcomeList[finalTally.indexOf(winner)]} wins with ${winner}`;
+      return `You lose: ${computerSelection} beats ${playerSelection[1]}!`;
     }
-}
 
-console.log(playGame());
+  }
+
+
+
+
+playRound();
+
+
+// function playGame () {
+//   let player = 0;
+//   let computer = 0;
+//   let tie = 0;
+//   const outcomeList = ['Player', 'Computer', 'Tie'];
+//   const computerOptions = ['scissors', 'paper', 'rock'];
+
+  // for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
+  //   let computerSelection = computerOptions[Math.floor(Math.random() *
+  //       computerOptions.length)];
+  //   const playerSelection = window.prompt("Rock, paper, or scissors?");
+  //   let outcome = playRound(playerSelection, computerSelection);
+  //
+  //   if (outcome.includes("You win!")) {
+  //     player += 1;
+  //   } else if (outcome.includes("You lose!")) {
+  //     computer += 1;
+  //   } else if (outcome.includes("Tie!")) {
+  //     tie += 1;
+  //   }
+  //   //console.log([`player=${player}`, `computer=${computer}`, `tie=${tie}`]);
+  //   outcome = playRound(playerSelection, computerSelection);
+  //
+  //   }
+    //let finalTally = [player, computer, tie];
+    //let winner = Math.max.apply(Math, finalTally);
+
+    //if (finalTally[0] == finalTally[1]) {
+    //  return "Tie.";
+    //} else {
+    //return `${outcomeList[finalTally.indexOf(winner)]} wins with ${winner}`;
+    //}
+//}
+
+//console.log(playGame());

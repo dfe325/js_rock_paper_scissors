@@ -63,9 +63,6 @@ function determineWinner(playerSelection, computerSelection) {
 
   }
 
-
-
-
 playRound();
 
 
